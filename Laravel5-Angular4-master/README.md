@@ -1,6 +1,6 @@
 # Laravel 5 y Angular 4 integrados en el mismo servidor
 
-## Instalacion
+## Instalacion (eliminar locks, vendor y node_modules)
 
 ```
 composer install
