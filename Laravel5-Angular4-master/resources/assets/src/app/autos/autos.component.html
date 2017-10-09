@@ -1,0 +1,78 @@
+	  <table>
+		<thead>
+		  <tr>
+			  <th>Modelo</th>
+			  <th>Año</th>
+			  <th>Nombre</th>
+			  <th>Acción <button class="btn btn-warning" (click)="activarCreate()">Agregar nuevo</button></th>
+
+		  </tr>
+		</thead>
+
+		<tbody>
+
+			<tr *ngFor="let p of cars.data">
+				<td>{{ p.model }}</td>
+				<td>{{ p.year }}</td>
+				<td>{{ p.name }}</td>
+
+				<td>
+					<button class="btn btn-warning" (click)="deleteCar(p.id)">Eliminar</button>
+					<button class="btn btn-warning" (click)="activarUpdate(p)">Modificar</button>
+				</td>
+			</tr>
+
+		</tbody>
+	  </table>
+
+<p><a [routerLink]="['/login']">Logout</a></p>
+
+<!--FORMULARIO PARA MODIFICAR AUTO-->
+<form novalidate *ngIf="habilitado">
+
+			<label>Nombre</label>
+			<input type="text" name="name" class="form-control"  [(ngModel)]="selectedCar.name" #name="ngModel" required />
+
+			<label>Modelo</label>
+
+			<input type="text" name="model" class="form-control" [(ngModel)]="selectedCar.model" #model="ngModel" required /> 
+
+			
+			<label>Año</label>
+			<input type="number" name="year" class="form-control"  [(ngModel)]="selectedCar.year" #year="ngModel" required />
+
+			<label>users_id</label>
+			<input type="number" name="users" class="form-control"  [(ngModel)]="selectedCar.users_id" #users_id="ngModel" required />
+
+
+		<div >
+			<button class="btn btn-primary" (click)="updateCar(selectedCar)">Modificar</button>
+		</div>
+
+	</form>
+
+
+<!--FOMRULARIO PARA CREAR AUTO-->
+	<form novalidate *ngIf="createHabilitado">
+
+			<label>Nombre</label>
+			<input type="text" name="name" class="form-control"  [(ngModel)]="newCar.name" #name="ngModel" required />
+
+			<label>Modelo</label>
+
+			<input type="text" name="model" class="form-control" [(ngModel)]="newCar.model" #model="ngModel" required /> 
+
+			
+			<label>Año</label>
+			<input type="number" name="year" class="form-control"  [(ngModel)]="newCar.year" #year="ngModel" required />
+
+			<label>users_id</label>
+			<input type="number" name="users" class="form-control"  [(ngModel)]="newCar.users_id" #users_id="ngModel" required />
+
+
+		<div >
+			<button class="btn btn-primary" (click)="createCar(newCar)">Agregar nuevo</button>
+		</div>
+
+	</form>
+
